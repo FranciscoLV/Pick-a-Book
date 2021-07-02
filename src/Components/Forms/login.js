@@ -4,7 +4,7 @@ import { Container, Button, Form, Nav } from 'react-bootstrap/'
 
 export const Login = () => {
     return (
-        <div className='text-left'>
+        <div>
             <Container className="login-container">
                 <Form>
                     <Form.Group controlId="formBasicEmail">

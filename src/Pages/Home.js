@@ -1,5 +1,5 @@
-// import React, {useState, useEffect} from 'react';
-import { Login } from '../Components/Forms/login';
+import React from 'react';
+import { Search } from '../Components/Forms/search';
 
 export const Home = () => {
 
@@ -15,7 +15,10 @@ export const Home = () => {
 
     return( 
         <>
-            <Login/>
+            <Search />
+            <div className ="App">
+               
+            </div>
         </>
     )
 

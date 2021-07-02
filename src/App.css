@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  background-image: url("https://images.pexels.com/photos/373465/pexels-photo-373465.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
+  /* https://images.pexels.com/photos/2846814/pexels-photo-2846814.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" */
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
 }
 
 .App-logo {
@@ -42,4 +49,15 @@
 .login-container {
   width: 30% !important;
   padding-top: 20px;
+}
+
+
+/* SEARCH */
+
+.color-nav{
+  background-color: black;
+}
+
+.form-container{
+  margin-left: 35%
 }
