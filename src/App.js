@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
 
 function App() {
   return (
-    <div className="App">
+    <React.Fragment>
       <Router>
         <Switch>
           <Route exact path='/'>
@@ -13,7 +13,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </div>
+    </React.Fragment>
 
   );
 }

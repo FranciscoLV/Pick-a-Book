@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+/* LOGIN */
+
+.login-container {
+  width: 30% !important;
+  padding-top: 20px;
+}

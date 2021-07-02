@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { Example } from '../Components/Example/example';
+// import React, {useState, useEffect} from 'react';
+import { Login } from '../Components/Forms/login';
 
 export const Home = () => {
 
@@ -15,7 +15,7 @@ export const Home = () => {
 
     return( 
         <>
-            <Example/>
+            <Login/>
         </>
     )
 
