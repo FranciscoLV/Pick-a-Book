@@ -1,16 +1,21 @@
 import React from 'react';
-import { Container, Button, Form, Navbar} from 'react-bootstrap/'
+import { Container, Form, Navbar} from 'react-bootstrap/'
 
 
-export const Search = () => {
+export const Search = ({userInput, onFormChange}) => {
+
+    const handleChange = (event) => { 
+        onFormChange(event.target.value)
+    }
+
     return (
         <div>
             <Navbar className="color-nav" variant="dark">
                 <Navbar.Brand href="#home">Pick-a-Book</Navbar.Brand>
                 <Container className="form-container">
                     <Form inline>
-                        <Form.Control type="text" placeholder="Search" className="mr-sm-1" />
-                        <Button variant="outline-info">Search</Button>
+                        <Form.Control type="text" placeholder="Search" className="mr-sm-1" value={userInput} onChange={handleChange}/>
+                        {/* <Button variant="outline-info">Search</Button> */}
                     </Form>
                 </Container>
             </Navbar>

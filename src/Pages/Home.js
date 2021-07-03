@@ -1,24 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Search } from '../Components/Forms/search';
 
 export const Home = () => {
 
-    // const [todo, setTodo] = useState([])
+    const [searchBook, setSearchBook] = useState('')
 
-    // useEffect(() => {
-    //     fetch('/api').then(response => {
-    //         if(response.ok){
-    //             return response.json()
-    //         }
-    //     }).then(data => console.log(data))
-    // }, [])
+    const handleFormChange = (inputValue) => {
+        console.log(inputValue)
+        setSearchBook(inputValue)
+    }
 
     return( 
         <>
-            <Search />
-            <div className ="App">
-               
-            </div>
+            <Search userInput={searchBook} onFormChange = {handleFormChange}/>
+            <div className ="App" /> 
         </>
     )
 
