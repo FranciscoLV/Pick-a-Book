@@ -1,24 +1,24 @@
 import React from 'react';
-import {Card} from 'react-bootstrap/'
+import {Card, Container, Row, Col} from 'react-bootstrap/'
 
 
 export const Grid = ({result}) => {
 
     return (
-        <div className="container">  
-            <div className="row">  
+        <Container>
+            <Row> 
                 {result.map(book => (
-                    <div key={book.id} className="col-sm-2">  
-                        <Card className="card-margin-top">  
-                            <Card.Img variant="top" src={book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : ''} alt={book.title} />  
+                    <Col key={book.id} >
+                    <Card className="card-margin-top" style={{ width: '10rem' }}>  
+                            <Card.Img variant="top" src={book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'}/>  
                             <Card.Body>  
-                                <h5 className="card-title">Card title</h5>  
+                                <h5 className="card-title">{book.volumeInfo.title}</h5>  
                             </Card.Body>  
                         </Card>  
-                    </div>  
+                    </Col>
                 ))}  
-            </div>  
-        </div> 
+            </Row>  
+        </Container>
         )
 }
 
