@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Search } from '../Components/Forms/search';
+import { Grid } from '../Components/Cards/grid';  
 import axios from 'axios';
 const API_KEY = process.env.REACT_APP_BOOKS_API_KEY;
 export const Home = () => {
@@ -12,16 +13,29 @@ export const Home = () => {
         // console.log(book)
         // console.log(API_KEY)
         setSearchBook(book)
-        axios.get("https://www.googleapis.com/books/v1/volumes?q=" + book + "&key=" + API_KEY + "&maxResults=40")
-        .then(data => {
-            // console.log(data.data.items);
-            setResult(data.data.items);
-        })
+        if (book){
+            axios.get("https://www.googleapis.com/books/v1/volumes?q=" + book + "&key=" + API_KEY + "&maxResults=40")
+            .then(data => {
+                // console.log(data.data.items);
+    
+                if (data.data.items){
+                    setResult(data.data.items);
+                }
+                else{
+                    setResult([])
+                }
+            })
+        }
+        else{
+            setResult([])
+        }
     }
     return( 
         <>
             <Search userInput={searchBook} onFormChange = {handleFormChange}/>
-            <div className ="App" /> 
+            <div className ="App">
+                <Grid result={result}/>
+            </div>  
         </>
     )
 
@@ -60,22 +74,22 @@ export const Home = () => {
 //                     </div>  
 //                 </div>  
 //             </div>  
-//             <div className="container">  
-//                 <div className="row">  
-//                     {result.map(book => (  
-//                         <div className="col-sm-2">  
-//                             <Card style={{ 'marginTop': '10px' }}>  
+            // <div className="container">  
+            //     <div className="row">  
+            //         {result.map(book => (  
+            //             <div className="col-sm-2">  
+            //                 <Card style={{ 'marginTop': '10px' }}>  
   
-//                                 <Card.Img variant="top" src={book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : ''} alt={book.title} />  
-//                                 <Card.Body>  
-//                                     <h5 className="card-title">Card title</h5>  
-//                                     <a className="btn btn-primary">Know more</a>  
-//                                 </Card.Body>  
-//                             </Card>  
-//                         </div>  
-//                     ))}  
-//                 </div>  
-//             </div>  
+            //                     <Card.Img variant="top" src={book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : ''} alt={book.title} />  
+            //                     <Card.Body>  
+            //                         <h5 className="card-title">Card title</h5>  
+            //                         <a className="btn btn-primary">Know more</a>  
+            //                     </Card.Body>  
+            //                 </Card>  
+            //             </div>  
+            //         ))}  
+            //     </div>  
+            // </div>  
 //         </form>  
   
 //     )  
