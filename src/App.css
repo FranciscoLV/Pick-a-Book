@@ -1,12 +1,7 @@
+body { padding-top: 56px; }
+
 .App {
   text-align: center;
-  background-image: url("https://images.pexels.com/photos/373465/pexels-photo-373465.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
-  /* https://images.pexels.com/photos/2846814/pexels-photo-2846814.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" */
-  position: fixed; 
-  min-width: 100%; 
-  min-height: 100%;
-  background-size: cover;
-  background-position: center; 
 
 }
 
@@ -45,6 +40,20 @@
   }
 }
 
+/* BACKGROUND */
+.image{
+  margin: 0;
+  background-image: url("https://images.pexels.com/photos/373465/pexels-photo-373465.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
+  /* https://images.pexels.com/photos/2846814/pexels-photo-2846814.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" */
+  position: absolute; 
+  min-width: 100%; 
+  min-height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; 
+
+}
+
 /* LOGIN */
 
 .login-container {
@@ -62,6 +71,7 @@
 .form-container{
   margin-left: 35%
 }
+
 
 
 
