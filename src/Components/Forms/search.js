@@ -5,6 +5,7 @@ import { Container, Form, Navbar} from 'react-bootstrap/'
 export const Search = ({userInput, onFormChange}) => {
 
     const handleChange = (event) => { 
+        event.preventDefault()
         onFormChange(event.target.value)
     }
 
