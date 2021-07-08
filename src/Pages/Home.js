@@ -9,7 +9,7 @@ export const Home = () => {
 
     const [searchBook, setSearchBook] = useState('')
     const [result, setResult] = useState([])
-    const [filter, setFilter] = useState('')
+    // const [filter, setFilter] = useState('')
 
     const handleFormChange = (inputValue) => {
         const book = inputValue;
@@ -37,8 +37,6 @@ export const Home = () => {
 
     const handleClickChange = (click) => {
         console.log(click)
-        setFilter(click)
-        console.log(filter)
     }
 
     return( 

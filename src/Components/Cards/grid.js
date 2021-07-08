@@ -19,6 +19,6 @@ export const Grid = ({result}) => {
                 ))}  
             </Row>  
         </Container>
-        )
+    )
 }
 
