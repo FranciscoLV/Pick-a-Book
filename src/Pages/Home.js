@@ -9,19 +9,29 @@ export const Home = () => {
 
     const [searchBook, setSearchBook] = useState('')
     const [result, setResult] = useState([])
-    // const [filter, setFilter] = useState('')
+    const [filter, setFilter] = useState('')
 
     const handleFormChange = (inputValue) => {
         const book = inputValue;
+        let query = filter
+        // console.log(query)
         // console.log(book)
-        // console.log(API_KEY)
-        setSearchBook(book)
-        if (book){
-            axios.get("https://www.googleapis.com/books/v1/volumes?q=" + book + "&key=" + API_KEY + "&maxResults=40")
-            // axios.get("https://www.googleapis.com/books/v1/volumes?q=flowers+inpublisher:keyes&key=" + API_KEY + "&maxResults=40")
 
+        // console.log(filter)
+        // console.log(API_KEY)
+ 
+        setSearchBook(book)
+
+        if (query){
+            query = '+' + filter +':'
+        }
+
+        if (book){
+            axios.get("https://www.googleapis.com/books/v1/volumes?q=" + book + query + "&key=" + API_KEY + "&maxResults=40")
+            // axios.get("https://www.googleapis.com/books/v1/volumes?q=flowers+inpublisher:keyes&key=" + API_KEY + "&maxResults=40")
             .then(data => {    
                 if (data.data.items){
+                    // console.log(data.data.items)
                     setResult(data.data.items);
                 }
                 else{
@@ -33,10 +43,27 @@ export const Home = () => {
             setResult([])
         }
     }
-    
 
-    const handleClickChange = (click) => {
-        console.log(click)
+
+    const handleClickChange = (bClick) => {
+        setFilter(bClick);
+        const click = '+' + bClick + ':';
+        // console.log(searchBook)
+        if (searchBook){
+            axios.get("https://www.googleapis.com/books/v1/volumes?q=" + searchBook + click +"&key=" + API_KEY + "&maxResults=40")
+            .then(data => {
+                if (data.data.items){
+                    setResult(data.data.items);
+                }
+                else{
+                    setResult([])
+                }
+            })
+        }
+        else{
+            setResult([])
+        }
+        
     }
 
     return( 
@@ -45,6 +72,4 @@ export const Home = () => {
                 <Grid result={result}/>
             </Container>
     )
-
-
 }

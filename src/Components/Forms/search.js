@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Form, Navbar, ToggleButtonGroup, ToggleButton} from 'react-bootstrap/'
+import { Container, Form, Navbar, ToggleButtonGroup, ToggleButton, Button} from 'react-bootstrap/'
 
 
 export const Search = ({userInput, onFormChange, onClickChange}) => {
@@ -9,27 +9,25 @@ export const Search = ({userInput, onFormChange, onClickChange}) => {
         onFormChange(event.target.value)
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-    }
-
     const handleClick = (event) => {
-        onClickChange(event)
+        // console.log(event.target.value)
+        onClickChange(event.target.value)
     }
 
     return (
         <Navbar fixed="top" className="color-nav" variant="dark">
-            <Navbar.Brand href="#home">Pick-a-Book</Navbar.Brand>
+            <Navbar.Brand href="/">Pick-a-Book</Navbar.Brand>
             <Container className="form-container">
-                <Form inline onSubmit={handleSubmit}>
+                <Form inline >
                     <Form.Control placeholder="Search" className="mr-sm-1" value={userInput} onChange={handleChange} />
-                    <ToggleButtonGroup aria-label="Basic example" name="radio" onChange={handleClick}>
-                        <ToggleButton variant="secondary" value={"intitle"}>Tittle</ToggleButton>
-                        <ToggleButton variant="secondary" value={"inauthor"}>Author</ToggleButton>
-                        <ToggleButton variant="secondary" value ={"inpublisher"}>Publisher</ToggleButton>
+                    <ToggleButtonGroup aria-label="Basic example" name="radio" >
+                        <ToggleButton variant="outline-secondary" value={"intitle"} onChange={handleClick}>Tittle</ToggleButton>
+                        <ToggleButton variant="outline-secondary" value={"inauthor"} onChange={handleClick}>Author</ToggleButton>
+                        <ToggleButton variant="outline-secondary" value ={"inpublisher"} onChange={handleClick}>Publisher</ToggleButton>
                     </ToggleButtonGroup>
                 </Form>
             </Container>
+            <Button variant="secondary">Login</Button>
         </Navbar>
     )
 }
