@@ -67,9 +67,9 @@ export const Home = () => {
     }
 
     return( 
-            <Container className="image"> 
-                <Search userInput={searchBook} onFormChange = {handleFormChange} onClickChange={handleClickChange}/>
-                <Grid result={result}/>
-            </Container>
+        <Container className="image"> 
+            <Search userInput={searchBook} onFormChange = {handleFormChange} onClickChange={handleClickChange}/>
+            <Grid result={result}/>
+        </Container>
     )
 }

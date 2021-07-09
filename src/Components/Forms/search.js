@@ -20,14 +20,14 @@ export const Search = ({userInput, onFormChange, onClickChange}) => {
             <Container className="form-container">
                 <Form inline >
                     <Form.Control placeholder="Search" className="mr-sm-1" value={userInput} onChange={handleChange} />
-                    <ToggleButtonGroup aria-label="Basic example" name="radio" >
+                    <ToggleButtonGroup aria-label="Basic example" name="radio">
                         <ToggleButton variant="outline-secondary" value={"intitle"} onChange={handleClick}>Tittle</ToggleButton>
                         <ToggleButton variant="outline-secondary" value={"inauthor"} onChange={handleClick}>Author</ToggleButton>
                         <ToggleButton variant="outline-secondary" value ={"inpublisher"} onChange={handleClick}>Publisher</ToggleButton>
                     </ToggleButtonGroup>
                 </Form>
             </Container>
-            <Button variant="secondary">Login</Button>
+            <Button variant="secondary">Login/SignUp</Button>
         </Navbar>
     )
 }

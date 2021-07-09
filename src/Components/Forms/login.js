@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Button, Form, Nav } from 'react-bootstrap/'
 
 
-export const Login = () => {
+export const LoginForm = () => {
     return (
         <div>
             <Container className="login-container">
@@ -18,7 +18,7 @@ export const Login = () => {
                     </Form.Group>
                     <Nav className="justify-content-center">
                         <Nav.Item>
-                            <Nav.Link href="/">Create Account</Nav.Link>
+                            <Nav.Link href="/signup">Create Account</Nav.Link>
                         </Nav.Item>
                     </Nav>
                     <div className="text-center">
