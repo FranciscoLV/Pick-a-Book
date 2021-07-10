@@ -1,4 +1,4 @@
-body { padding-top: 56px; }
+/* body { padding-top: 56px; } */
 
 .App {
   text-align: center;
@@ -42,24 +42,53 @@ body { padding-top: 56px; }
 
 /* BACKGROUND */
 .image{
-  margin: 0;
   background-image: url("https://images.pexels.com/photos/373465/pexels-photo-373465.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
-  /* https://images.pexels.com/photos/2846814/pexels-photo-2846814.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" */
   position: absolute; 
   min-width: 100%; 
   min-height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center; 
-
+  background-position: center center; 
 }
+
+.image-login{
+  background-image: url("https://images.pexels.com/photos/2846814/pexels-photo-2846814.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
+  position: absolute; 
+  min-width: 100%; 
+  min-height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; 
+}
+
+.image-create-account{
+  background-image: url("https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?cs=srgb&dl=pexels-wendy-van-zyl-1112048.jpg&fm=jpg");
+  position: absolute; 
+  min-width: 100%; 
+  min-height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; 
+}
+
 
 /* LOGIN */
-
 .login-container {
   width: 30% !important;
-  padding-top: 20px;
+  padding-top: 48%;
 }
+
+.labels{
+  color: white;
+}
+
+.create-account{
+  color: darkslategrey;
+  padding-top: 10px;
+  padding-bottom: 15px;
+}
+
+
 
 
 /* SEARCH */
@@ -69,13 +98,24 @@ body { padding-top: 56px; }
 }
 
 .form-container{
-  margin-left: 30%
+  margin-left: 28%
 }
 
 
 
 
-/* CARD */
-.card-margin-top{
+/* CARD/GRID */
+.card{
   margin-top: 10px;
+  width: 12rem;
+  cursor: pointer;
+}
+
+.card-text{
+  color: black;
+}
+
+.grid{
+  padding-top: 60px;
+  padding-bottom: 10px;
 }

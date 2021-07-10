@@ -27,7 +27,7 @@ export const Search = ({userInput, onFormChange, onClickChange}) => {
                     </ToggleButtonGroup>
                 </Form>
             </Container>
-            <Button variant="secondary">Login/SignUp</Button>
+            <Button href="/login" variant="secondary">Login</Button>
         </Navbar>
     )
 }

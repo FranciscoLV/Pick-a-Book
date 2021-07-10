@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Search } from '../Components/Forms/search';
+import { Search } from '../Components/Navbar/search';
 import { Grid } from '../Components/Cards/grid';  
 import {Container} from 'react-bootstrap/'
 import axios from 'axios';
