@@ -6,6 +6,8 @@ export const LoginForm = () => {
     return (
         <Container className="login-container">
             <Form>
+                <h3 className="labels">Login</h3>
+
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label className="labels">Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email"/>
@@ -15,15 +17,12 @@ export const LoginForm = () => {
                     <Form.Label className="labels">Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
-                <Nav className="justify-content-center">
-                    <Nav.Item>
-                        <Nav.Link className="create-account" href="/signup">Create Account</Nav.Link>
-                    </Nav.Item>
-                </Nav>
-                <div className="text-center">
-                    <Button variant="secondary" type="submit">Login</Button>
-                </div>
+                <Button type="submit" className="btn btn-dark btn-block">Login</Button>
+                <p className="forgot-password text-right">
+                    Don't have an account? <a href="/signup">Create Account</a>
+                </p> 
             </Form>
         </Container>
     )
 }
+

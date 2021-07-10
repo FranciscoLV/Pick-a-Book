@@ -25,7 +25,6 @@ export const Home = () => {
         if (query){
             query = '+' + filter +':'
         }
-
         if (book){
             axios.get("https://www.googleapis.com/books/v1/volumes?q=" + book + query + "&key=" + API_KEY + "&maxResults=40")
             // axios.get("https://www.googleapis.com/books/v1/volumes?q=flowers+inpublisher:keyes&key=" + API_KEY + "&maxResults=40")

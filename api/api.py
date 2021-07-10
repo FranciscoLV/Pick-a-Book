@@ -7,11 +7,11 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///pickabook.db"
 db = SQLAlchemy(app)
 
 
-@app.route('/api', methods=['GET'])
-def index():
-    return {
-        'name':'Hello World'
-    }
+# @app.route('/api', methods=['GET'])
+# def index():
+#     return {
+#         'name':'Hello World'
+#     }
 
 if __name__ == '__main__':
     app.run(debug=True)
