@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Button, Form, Nav } from 'react-bootstrap/'
+import { Container, Button, Form} from 'react-bootstrap/'
 
 
 export const LoginForm = () => {
@@ -17,7 +17,7 @@ export const LoginForm = () => {
                     <Form.Label className="labels">Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
-                <Button type="submit" className="btn btn-dark btn-block">Login</Button>
+                <Button type="submit" variant="dark" block="true"> Login</Button>
                 <p className="forgot-password text-right">
                     Don't have an account? <a href="/signup">Create Account</a>
                 </p> 

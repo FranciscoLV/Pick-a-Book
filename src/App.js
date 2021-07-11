@@ -3,6 +3,7 @@ import './App.css';
 import { Home } from './Pages/Home'
 import { Login } from './Pages/Login'
 import { Signup } from './Pages/Signup'
+import { BookInfo  } from './Pages/BookInfo';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
 
 function App() {
@@ -17,6 +18,9 @@ function App() {
         </Route>
         <Route path='/signup'>
           <Signup/>
+        </Route>
+        <Route path='/:id'>
+          <BookInfo/>
         </Route>
       </Switch>
     </Router>

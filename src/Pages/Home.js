@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Search } from '../Components/Navbar/search';
+import { NavigationBar } from '../Components/Nav/navigationBar';
 import { Grid } from '../Components/Cards/grid';  
 import {Container} from 'react-bootstrap/'
 import axios from 'axios';
@@ -14,20 +14,12 @@ export const Home = () => {
     const handleFormChange = (inputValue) => {
         const book = inputValue;
         let query = filter
-        // console.log(query)
-        // console.log(book)
-
-        // console.log(filter)
-        // console.log(API_KEY)
- 
         setSearchBook(book)
-
         if (query){
             query = '+' + filter +':'
         }
         if (book){
             axios.get("https://www.googleapis.com/books/v1/volumes?q=" + book + query + "&key=" + API_KEY + "&maxResults=40")
-            // axios.get("https://www.googleapis.com/books/v1/volumes?q=flowers+inpublisher:keyes&key=" + API_KEY + "&maxResults=40")
             .then(data => {    
                 if (data.data.items){
                     // console.log(data.data.items)
@@ -47,7 +39,6 @@ export const Home = () => {
     const handleClickChange = (bClick) => {
         setFilter(bClick);
         const click = '+' + bClick + ':';
-        // console.log(searchBook)
         if (searchBook){
             axios.get("https://www.googleapis.com/books/v1/volumes?q=" + searchBook + click +"&key=" + API_KEY + "&maxResults=40")
             .then(data => {
@@ -67,7 +58,7 @@ export const Home = () => {
 
     return( 
         <Container className="image"> 
-            <Search userInput={searchBook} onFormChange = {handleFormChange} onClickChange={handleClickChange}/>
+            <NavigationBar userInput={searchBook} onFormChange = {handleFormChange} onClickChange={handleClickChange}/>
             <Grid result={result}/>
         </Container>
     )
