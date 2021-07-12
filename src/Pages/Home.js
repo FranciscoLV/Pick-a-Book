@@ -14,7 +14,9 @@ export const Home = () => {
     const handleFormChange = (inputValue) => {
         const book = inputValue;
         let query = filter
+ 
         setSearchBook(book)
+
         if (query){
             query = '+' + filter +':'
         }

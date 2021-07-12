@@ -1,24 +1,26 @@
-import React from 'react';
+import axios from 'axios';
+import React, {useState, useEffect} from 'react';
 import { NavigationBar } from '../Components/Nav/navigationBar';
-// import { Grid } from '../Components/Cards/grid';  
-import {Container, Row, Col, Image} from 'react-bootstrap/'
+import { BookInfoTab } from '../Components/Tabs/bookInfoTab';
+import {Container} from 'react-bootstrap/';
+import {useParams} from "react-router-dom";
+const API_KEY = process.env.REACT_APP_BOOKS_API_KEY;
 
 
 export const BookInfo = () => {
 
-    // const handleClickChange = (book) => {
-    //     console.log(book.id)
-    // }
+    const {bookId} = useParams()
+    const [book, setBook] = useState([])
 
-    return( 
-        <Container className="image-book"> 
+    useEffect(() => {
+        axios.get("https://www.googleapis.com/books/v1/volumes/" + bookId + "?key=" + API_KEY)
+        .then(data => setBook(data.data))
+    }, [bookId]);
+    
+    return(
+        <Container className="image-book">
             <NavigationBar/>
-            {/* <Row>
-                <Col>
-                    <Image src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg" rounded/>
-                </Col>
-            </Row> */}
+            <BookInfoTab book={book}/>
         </Container>
     )
 }
-

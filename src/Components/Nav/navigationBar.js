@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Form, Navbar, ToggleButtonGroup, ToggleButton, Button} from 'react-bootstrap/'
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
+import { Switch, Route} from "react-router-dom"
 
 
 export const NavigationBar = ({userInput, onFormChange, onClickChange}) => {
@@ -60,20 +60,3 @@ export const NavigationBar = ({userInput, onFormChange, onClickChange}) => {
         </Switch>
     )
 }
-
-{/* <Router>
-    <Switch>
-        <Route exact path='/'>
-            <Home/>
-        </Route>
-        <Route path='/login'>
-            <Login/>
-        </Route>
-        <Route path='/signup'>
-            <Signup/>
-        </Route>
-        <Route path='/:id'>
-            <BookInfo/>
-        </Route>
-    </Switch>
-</Router> */}

@@ -72,7 +72,7 @@
 }
 
 .image-book{
-  background-image: url("https://images.pexels.com/photos/5425686/pexels-photo-5425686.jpeg?cs=srgb&dl=pexels-kate-graur-5425686.jpg&fm=jpg");
+  background-image: url("https://images.pexels.com/photos/5706223/pexels-photo-5706223.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
   position: absolute; 
   min-width: 100%; 
   min-height: 100%;
@@ -80,8 +80,13 @@
   background-repeat: no-repeat;
   background-position: center center; 
 }
-
-
+/* https://images.pexels.com/photos/5425686/pexels-photo-5425686.jpeg?cs=srgb&dl=pexels-kate-graur-5425686.jpg&fm=jpg */
+/* https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260 */
+/* https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260 */
+/* https://images.pexels.com/photos/4440123/pexels-photo-4440123.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260 */
+/* https://images.pexels.com/photos/1122530/pexels-photo-1122530.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500 */
+/* https://images.pexels.com/photos/3368816/pexels-photo-3368816.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500 */
+/* https://images.pexels.com/photos/5706223/pexels-photo-5706223.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260 */
 
 /* LOGIN */
 .login-container {
@@ -129,4 +134,35 @@
 .grid{
   padding-top: 60px;
   padding-bottom: 10px;
+}
+
+
+/* TABS */
+.tabs-container{
+  padding-top: 120px;
+}
+
+/* Inactive tab */
+.tabs a{
+  background-color: rgba(0, 0, 0, 0.8);
+  color: black;
+}
+
+
+.tabs a:hover {
+  background-color: gray;
+  color: black;
+}
+
+.tabs a:focus {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: black;
+}
+
+.tabs a{
+  color: whitesmoke;
+}
+
+.about-book{
+  font-size: x-large;
 }
