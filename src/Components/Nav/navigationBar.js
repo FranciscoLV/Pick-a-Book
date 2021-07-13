@@ -1,9 +1,13 @@
 import React from 'react';
-import { Container, Form, Navbar, ToggleButtonGroup, ToggleButton, Button} from 'react-bootstrap/'
+import { Container, Form, Navbar, ToggleButtonGroup, ToggleButton, Button, Image} from 'react-bootstrap/'
 import { Switch, Route} from "react-router-dom"
+import searchIcon from '../../Assets/searchIcon.svg'
+import { useHistory } from "react-router-dom";
 
 
 export const NavigationBar = ({userInput, onFormChange, onClickChange}) => {
+
+    const history = useHistory();
 
     const handleChange = (event) => { 
         event.preventDefault()
@@ -13,6 +17,10 @@ export const NavigationBar = ({userInput, onFormChange, onClickChange}) => {
     const handleClick = (event) => {
         // console.log(event.target.value)
         onClickChange(event.target.value)
+    }
+
+    const handleSearchClick = () => {
+        history.push('/')
     }
 
     return (
@@ -37,7 +45,8 @@ export const NavigationBar = ({userInput, onFormChange, onClickChange}) => {
                 <Navbar fixed="top" className="color-nav" variant="dark">
                     <Navbar.Brand href="/">Pick-a-Book</Navbar.Brand>
                     <Container className="form-container">
-                    </Container> 
+                    </Container>
+                    <Image className="search-icon d-inline-block align-top" src={searchIcon} alt='' width="50" height="40" rounded onClick={handleSearchClick}/>
                     <Button href="/signup" variant="secondary">SignUp</Button>
                 </Navbar>
             </Route>
@@ -45,15 +54,17 @@ export const NavigationBar = ({userInput, onFormChange, onClickChange}) => {
                 <Navbar fixed="top" className="color-nav" variant="dark">
                     <Navbar.Brand href="/">Pick-a-Book</Navbar.Brand>
                     <Container className="form-container">
-                    </Container> 
+                    </Container>
+                    <Image className="search-icon d-inline-block align-top" src={searchIcon} alt='' width="50" height="40" rounded onClick={handleSearchClick}/>
                     <Button href="/login" variant="secondary">Login</Button>
                 </Navbar>
             </Route>
             <Route path='/:id'>
                 <Navbar fixed="top" className="color-nav" variant="dark">
-                    <Navbar.Brand href="/">Pick-a-Book</Navbar.Brand>
+                    <Navbar.Brand  href="/">Pick-a-Book</Navbar.Brand>
                     <Container className="form-container">
                     </Container> 
+                    <Image className="search-icon d-inline-block align-top" src={searchIcon} alt='' width="50" height="40" rounded onClick={handleSearchClick}/>
                     <Button href="/login" variant="secondary">Login</Button>
                 </Navbar>
             </Route>

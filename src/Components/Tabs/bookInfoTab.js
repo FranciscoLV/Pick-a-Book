@@ -1,24 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Markup } from 'interweave';
 import { Container, Tabs, Tab, Col, Row, Image, Button } from 'react-bootstrap/'
+import { ReviewModal } from '../Modal/reviewModal';
+import ReactStars from "react-rating-stars-component";
 
 
 export const BookInfoTab = ({book}) => {
 
-    const handleClick = () =>{
-        window.open(book.saleInfo.buyLink, "_blank")
+    const [modalShow, setModalShow] = useState(false);
+
+    const handleClickBuy = () => {
+        window.open(book.saleInfo.buyLink, "_blank");
     }
-    console.log(book)
+
+    const handleClickReview = () => {
+        setModalShow(true);
+    }
+    
+    const handleHide = () => {
+        setModalShow(false)
+    }
+
     return(
         <Container className="tabs-container">
             <Row>
                 <Col sm={3}>
                 {/* IF STATMENT FOR THUMBNAIL OR SMALL IMAGE */}
                     <Image src={book.volumeInfo !== undefined && book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'} fluid/>
+                    <ReactStars 
+                        size={30}
+                        value={0}
+                        edit={false}
+                        isHalf={true} 
+                        emptyIcon={<i className="far fa-star"></i>}
+                        halfIcon={<i className="fa fa-star-half-alt"></i>}
+                        fullIcon={<i className="fa fa-star"></i>}/>
+                    <p className="rating-book"><b>Rating:</b> 4.5/5 ⭐ <br/>(2 reviews)</p> 
+                    {/* AGREGAR EL NUMERO DE REVIEWS */}
+                    <Button variant="secondary" onClick={handleClickReview}>Write a Review</Button>
+                    <ReviewModal show={modalShow} onHide={handleHide} book={book}/>
                 </Col>
                 <Col sm={9}>
                     <Tabs className="tabs" defaultActiveKey="About the book" id="uncontrolled-tab-example" fill justify>
-                        <Tab  eventKey="About the book" title="About the book">
+                        <Tab className="description-tab" eventKey="About the book" title="About the book">
                             <Container>
                                 <ul className="about-book">
                                     <li>
@@ -49,10 +73,10 @@ export const BookInfoTab = ({book}) => {
                                 </ul>
                             </Container>
                         </Tab>
-                        <Tab eventKey="Description" title="Description">
+                        <Tab eventKey="Description" title="Description" className="description-tab">
                             <Markup content={book.volumeInfo !== undefined && book.volumeInfo.description !== undefined? book.volumeInfo.description : 'There is no description available for this book!'}/>
 \                        </Tab>
-                        <Tab eventKey="Buy book" title="Buy book">
+                        <Tab className="description-tab" eventKey="Buy book" title="Buy book">
                             <Container>
                                 <ul className="about-book">
                                     <li>
@@ -70,7 +94,7 @@ export const BookInfoTab = ({book}) => {
                                         {book.saleInfo !== undefined && book.saleInfo.isEbook !== undefined && book.saleInfo.isEbook ? 'Available' : 'Not Available'}
                                     </li>
                                 </ul>
-                                <Button disabled={!(book.saleInfo !== undefined && book.saleInfo.buyLink)} variant="outline-secondary" size="lg" onClick={handleClick}> 
+                                <Button disabled={!(book.saleInfo !== undefined && book.saleInfo.buyLink)} variant="outline-secondary" size="lg" onClick={handleClickBuy}> 
                                     Buy {book.volumeInfo !== undefined && book.volumeInfo.title !== undefined ? book.volumeInfo.title : 'book'}
                                 </Button>
                             </Container>

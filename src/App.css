@@ -88,16 +88,14 @@
 /* https://images.pexels.com/photos/3368816/pexels-photo-3368816.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500 */
 /* https://images.pexels.com/photos/5706223/pexels-photo-5706223.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260 */
 
-/* LOGIN */
+/* LOGIN /SIGNUP */
 .login-container {
   width: 30% !important;
   padding-top: 38%;
 }
-
 .labels{
   color: white;
 }
-
 .create-account{
   color: darkslategrey;
   padding-top: 10px;
@@ -108,13 +106,17 @@
 
 
 /* SEARCH */
-
 .color-nav{
   background-color: black;
 }
-
 .form-container{
   margin-left: 20%
+}
+.search-icon{
+  padding-right: 20px;
+}
+.search-icon:hover{
+  opacity: .6;
 }
 
 
@@ -126,43 +128,44 @@
   width: 12rem;
   cursor: pointer;
 }
-
 .card-text{
   color: black;
 }
-
 .grid{
   padding-top: 60px;
   padding-bottom: 10px;
 }
 
 
+
+
 /* TABS */
 .tabs-container{
   padding-top: 120px;
 }
-
-/* Inactive tab */
 .tabs a{
   background-color: rgba(0, 0, 0, 0.8);
   color: black;
 }
-
-
 .tabs a:hover {
   background-color: gray;
   color: black;
 }
-
 .tabs a:focus {
   background-color: rgba(0, 0, 0, 0.5);
   color: black;
 }
-
 .tabs a{
   color: whitesmoke;
 }
-
 .about-book{
   font-size: x-large;
 }
+.description-tab{
+  padding-top: 15px;
+}
+.rating-book{
+  font-size: x-large;
+  padding-top: 5px;
+}
+
