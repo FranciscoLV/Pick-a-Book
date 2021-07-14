@@ -1,8 +1,16 @@
 import React from 'react';
 import { Container, Button, Form} from 'react-bootstrap/'
 
-
 export const LoginForm = () => {
+
+    const handleClick = () => {
+        fetch('/login').then(response => {
+            if(response.ok){
+                return response.json()
+            }
+        }).then(data => console.log(data))
+    }
+
     return (
         <Container className="login-container">
             <Form>
@@ -17,7 +25,7 @@ export const LoginForm = () => {
                     <Form.Label className="labels">Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
-                <Button type="submit" variant="dark" block="true"> Login</Button>
+                <Button as="a" href="/" type="submit" variant="dark" block="true" onClick={handleClick}> Login</Button>
                 <p className="forgot-password text-right">
                     Don't have an account? <a href="/signup">Create Account</a>
                 </p> 
