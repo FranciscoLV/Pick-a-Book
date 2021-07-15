@@ -24,7 +24,7 @@ export const Signup = () => {
         else{        
             const signup = {username, email, password}
 
-            fetch('/signup/create', {
+            fetch('/', {
                 method: 'POST',
                 headers: {"Content-Type" : "application/json"},
                 body: JSON.stringify(signup)
