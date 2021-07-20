@@ -9,31 +9,30 @@ export const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmP, setConfirmP] = useState('')
-    
-    const handleFormSubmit = (e) => {
 
+
+
+    const handleFormSubmit = (e) => {
         if(password !== confirmP){
             alert("Passwords don't match");
             e.preventDefault()
         }
-        
         else if(password.length < 7){
             alert("Password is too short")
             e.preventDefault()
         }
         else{        
             const signup = {username, email, password}
-
-            fetch('/', {
+            fetch('/signup/create', {
                 method: 'POST',
-                headers: {"Content-Type" : "application/json"},
+                headers: {"Content-type": "application/json; charset=UTF-8"},
                 body: JSON.stringify(signup)
             })
             .then(response => response.json())
-            .then(console.log("DONE BABY"))
-
         }
     }
+
+
 
     const handleFormChangeU = (input) => {
         const i = input
