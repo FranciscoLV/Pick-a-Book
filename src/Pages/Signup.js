@@ -2,13 +2,15 @@ import React, {useState} from 'react';
 import { NavigationBar } from '../Components/Nav/navigationBar';
 import { SignupForm } from '../Components/Forms/signupForm';
 import {Container} from 'react-bootstrap/'
+import { useHistory } from "react-router-dom";
 
 export const Signup = () => {
 
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmP, setConfirmP] = useState('')
+    const [confirmP, setConfirmP] = useState('');
+    const history = useHistory();
 
 
 
@@ -23,16 +25,28 @@ export const Signup = () => {
         }
         else{        
             const signup = {username, email, password}
-            fetch('/signup/create', {
+            fetch('/signup', {
                 method: 'POST',
-                headers: {"Content-type": "application/json; charset=UTF-8"},
+                headers: {"Content-type": "application/json"},
                 body: JSON.stringify(signup)
             })
             .then(response => response.json())
+            .then(data => {
+                if(data["404"] !== undefined){
+                    alert(data["404"])
+                }
+                else {
+                    alert(data["200"])
+                    history.push('/login')
+                }
+            })
+            e.preventDefault() 
         }
     }
 
-
+    // alert("Account created successfully!!")
+            
+    // history.push('/login') 
 
     const handleFormChangeU = (input) => {
         const i = input
