@@ -19,17 +19,24 @@ export const Login = () => {
             headers: {"Content-type": "application/json"},
             body: JSON.stringify(login)
         })
-        .then(response => response.json())
-        .then(data => {
-            if(data["404"] !== undefined){
-                alert(data["404"])
+        .then(response => {
+            if(response.ok){
+                response.json().then(data => {
+                    alert(data.message)
+                    console.log(data.token)
+                    localStorage.setItem("jwt-token", data.token)
+                    history.push("/")
+                })
             }
-            else {
-                alert(data["200"])
-                history.push('/home')
+            else if(response.status === 401){
+                alert("Account does not exist!")
+            }
+            else if(response.status === 402){
+                alert("Incorrect password")
             }
         })
-        e.preventDefault()        
+
+        e.preventDefault()
     }
 
 

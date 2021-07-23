@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Form, Navbar, ToggleButtonGroup, ToggleButton, Button, Image} from 'react-bootstrap/'
 import { Switch, Route} from "react-router-dom"
 import searchIcon from '../../Assets/searchIcon.svg'
@@ -8,6 +8,25 @@ import { useHistory } from "react-router-dom";
 export const NavigationBar = ({userInput, onFormChange, onClickChange}) => {
 
     const history = useHistory();
+
+
+    // useEffect(() => {
+
+    //     const token = localStorage.getItem('jwt-token')
+
+    //     fetch('/protected', {
+    //         method: 'GET',
+    //         headers: {'Authorization': 'Bearer' + token}
+    //     })
+    //     .then(response => {
+    //         if(response.ok){
+    //             response.json();
+    //         }
+    //         else{
+    //             console.log("Missing or invalid token")
+    //         }
+    //     })
+    // }, [])
 
     const handleChange = (event) => { 
         event.preventDefault()

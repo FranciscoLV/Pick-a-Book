@@ -1,6 +1,11 @@
 from flask import Blueprint, json, request, jsonify
+from werkzeug.security import check_password_hash, generate_password_hash
 from app.models import User
-from app import db
+from app import db, jwt
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+# get jwt identity and curret user work similar
+# use decorater @jwt_required for private routes
+
 
 
 users = Blueprint('users', __name__)
@@ -10,31 +15,29 @@ users = Blueprint('users', __name__)
 def signup():
     request_data = json.loads(request.data)
 
-    password=request_data['password']
     username=request_data['username']
     email=request_data['email']
-
-    # passwordHash = bcrypt.generate_password_hash(password).decode('utf-8')
-    user = User(username=username,
-                email=email,
-                password=password)
+    password=request_data['password']
     
     userE = User.query.filter_by(email=email).first()
     userU = User.query.filter_by(username=username).first()
 
     if userE:
-        print(userE)
-        return {"404" : "Sorry!, This email is already in use!"}
+        return jsonify({"message" : "Sorry!, This email is already in use!"}), 401
     if userU:
-        print("userU")
-        return {"404" : "Sorry!, This username already exists!"}
+        return jsonify({"message" : "Sorry!, This username already exists!"}), 402
 
-    print("Nothing")
+
+    user = User(username=username,
+            email=email,
+            password=generate_password_hash(password))
+
     db.session.add(user)
     db.session.commit()
 
-    return {"200" : "Account created succesfully"}
+    # access_token = create_access_token(identity = user.id)
 
+    return jsonify({'message': 'Welcome {}, your account has been created!'.format(user.username)}), 200
 
 
 
@@ -43,13 +46,32 @@ def signup():
 def login():
     request_data = json.loads(request.data)
 
-    password=request_data['password']
     email=request_data['email']
+    password=request_data['password']
 
-    userE = User.query.filter_by(email=email, password=password).first()
-    # print(userE)
-    if not userE:
-        return {"404" : "Incorrect email/password"}
+    user = User.query.filter_by(email=email).first()
 
+    if not user:
+        return jsonify({"message" : "Account does not exist!"}), 401
+    elif not check_password_hash(user.password, password):
+        return jsonify({"message" : "Incorrect password!"}), 402
 
-    return {"200" : "Welcome!"}
+    access_token = create_access_token(identity = user.id)
+    return jsonify({'message': 'Logged in as {}'.format(user.username), 'token': access_token}), 200
+
+# @users.route("/who_am_i", methods=["GET"])
+# @jwt_required
+# def protected():
+#     return jsonify(
+#         id=current_user.id,
+#         email=current_user.email,
+#         username=current_user.username,
+#     )
+
+@users.route("/protected", methods=["GET"])
+@jwt_required()
+def get_user():
+    currentUser = get_jwt_identity()
+    user = User.filter.get(currentUser)
+    return jsonify(id=user.id, email=user.email, username=user.username), 200
+    # return jsonify({"id" : user.id, "email" : user.email, "username" : user.username}), 200

@@ -27,19 +27,23 @@ export const Signup = () => {
             const signup = {username, email, password}
             fetch('/signup', {
                 method: 'POST',
-                headers: {"Content-type": "application/json"},
+                headers: {"Content-type": "application/json", "Accept" : "application/json"},
                 body: JSON.stringify(signup)
             })
-            .then(response => response.json())
-            .then(data => {
-                if(data["404"] !== undefined){
-                    alert(data["404"])
+            .then(response => {
+                if(response.ok){
+                    response.json().then(data => {
+                        alert(data.message)
+                        history.push('/login')
+                    })
                 }
-                else {
-                    alert(data["200"])
-                    history.push('/login')
+                else if(response.status === 401){
+                    alert("Sorry, this email is already in use!")
                 }
-            })
+                else if(response.status === 402){
+                    alert("Sorry, this username is already in use!")
+                }
+            })            
             e.preventDefault() 
         }
     }
